@@ -5,12 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MarKod - Akıllı Market Asistanı</title>
     
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-F8J0MLF2C5"></script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HBPDZKSWJ2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-F8J0MLF2C5');
+      gtag('config', 'G-HBPDZKSWJ2');
     </script>
 
     <script src="https://cdn.tailwindcss.com"></script>
@@ -58,39 +58,29 @@
         <div class="w-full max-w-xs bg-slate-200 h-2 rounded-full overflow-hidden">
             <div id="progress-bar" class="bg-indigo-600 h-full transition-all duration-[5000ms] ease-linear" style="width: 0%"></div>
         </div>
-        <p class="mt-4 text-sm text-slate-400">Lütfen bekleyiniz, Google Play Store açılıyor.</p>
+        <p class="mt-4 text-sm text-slate-400 text-shadow-none">Lütfen bekleyiniz, Google Play Store açılıyor.</p>
 
     </div>
 
     <script>
-        // Sayfa yüklendiğinde ilerleme çubuğunu başlat
         window.onload = function() {
             document.getElementById('progress-bar').style.width = '100%';
         };
 
         const urlParams = new URLSearchParams(window.location.search);
-        const myReferrer = urlParams.get('referrer');
+        const myReferrer = urlParams.get('referrer') || 'root_direct';
 
-        if (myReferrer) {
-            // GA4 Etkinliği Gönder
-            gtag('event', 'app_redirection', {
-                'referrer_id': myReferrer,
-                'source': 'github_landing_page'
-            });
+        // GA4 Etkinliği Gönder (Yeni kod ile)
+        gtag('event', 'app_redirection', {
+            'referrer_id': myReferrer,
+            'source': 'root_landing_page'
+        });
 
-            console.log("Parametre: " + myReferrer + ". 5 saniye içinde yönlendiriliyorsunuz...");
+        console.log("Parametre: " + myReferrer + ". Yönlendiriliyorsunuz...");
 
-            // 5 Saniye (5000ms) bekleme
-            setTimeout(function() {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.cagatayerturk.markod";
-            }, 5000);
-        } else {
-            // Eğer parametre yoksa 5 saniye sonra yine yönlendir veya profil sayfana gönder
-            // Şimdilik yine Play Store'a yönlendirelim
-            setTimeout(function() {
-                window.location.href = "https://play.google.com/store/apps/details?id=com.cagatayerturk.markod";
-            }, 5000);
-        }
+        setTimeout(function() {
+            window.location.href = "https://play.google.com/store/apps/details?id=com.cagatayerturk.markod&hl=tr";
+        }, 5000);
     </script>
 </body>
 </html>
